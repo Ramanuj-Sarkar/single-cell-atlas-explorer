@@ -1,0 +1,29 @@
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# --- Jupyter / Matplotlib / Nextflow caches ------------------------------
+.ipython/
+.mplcache/
+.jupyter/
+.jupyter-prefix/
+.nextflow_home/
+.nextflow/
+.nextflow.log*
+.docker-config/
+work/
+
+# --- generated data & results --------------------------------------------
+data/*.h5ad
+results/
+results_nextflow*/
+
+# --- local tooling --------------------------------------------------------
+tools/nextflow          # downloaded Nextflow launcher binary
+*.log
+
+# --- OS / IDE -------------------------------------------------------------
+.DS_Store
+.idea/

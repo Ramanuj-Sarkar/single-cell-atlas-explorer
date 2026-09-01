@@ -1,0 +1,26 @@
+# Conda environment for local development / running the notebook and script
+# (alternative to the Docker image). Create with:
+#   conda env create -f environment.yml
+name: scae
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.12
+  - scanpy=1.12.4
+  - anndata>=0.11
+  - numpy>=1.26
+  - scipy>=1.13
+  - pandas>=2.2
+  - matplotlib>=3.9
+  - igraph>=1.0
+  - leidenalg>=0.10
+  - umap-learn>=0.5.6
+  - scikit-learn>=1.5
+  - natsort
+  - multiqc>=1.27
+  - jupyter
+  - nbconvert
+  - session-info
+  - pip
