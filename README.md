@@ -8,12 +8,12 @@ notebook-plus-script pair with a Nextflow/Docker/MultiQC wrapper.
 
 ## Stack and rationale
 
-| Layer | Tool | Role |
-|---|---|---|
-| Analysis | **Scanpy** (Python) | QC, normalization, PCA/UMAP, Leiden clustering, marker genes, annotation |
-| Orchestration | **Nextflow** (DSL2) | Reproducible, resumable, step-wise pipeline (`nextflow/main.nf`) |
-| Environment | **Docker** | Containerized, pinned environment (`docker/Dockerfile`) |
-| Reporting | **MultiQC** | One HTML report aggregating step-wise QC metrics & composition |
+| Layer         | Tool                | Role                                                                     |
+|---------------|---------------------|--------------------------------------------------------------------------|
+| Analysis      | **Scanpy** (Python) | QC, normalization, PCA/UMAP, Leiden clustering, marker genes, annotation |
+| Orchestration | **Nextflow** (DSL2) | Reproducible, resumable, step-wise pipeline (`nextflow/main.nf`)         |
+| Environment   | **Docker**          | Containerized, pinned environment (`docker/Dockerfile`)                  |
+| Reporting     | **MultiQC**         | One HTML report aggregating step-wise QC metrics & composition           |
 
 > **Note on the suggested stack (GATK, SAMtools/BCFtools):** this dataset is
 > already an expression matrix (barcodes × genes), not raw sequencing reads —
@@ -117,14 +117,14 @@ multiqc results_nextflow --config nextflow/assets/multiqc_config.yml --outdir mu
 
 ## Parameters (`nextflow run ... --key value`)
 
-| Param | Default | Description |
-|---|---|---|
-| `--input` | `data/pbmc3k_raw.h5ad` | Raw expression matrix |
-| `--outdir` | `results_nextflow` | Published results root |
-| `--resolution` | `0.8` | Leiden clustering resolution |
-| `--python` | `python3` | Python interpreter (standard profile) |
-| `--multiqc` | `multiqc` | MultiQC executable (standard profile) |
-| `--container` | `scanpy-pbmc3k:latest` | Docker image (docker profile) |
+| Param          | Default                | Description                           |
+|----------------|------------------------|---------------------------------------|
+| `--input`      | `data/pbmc3k_raw.h5ad` | Raw expression matrix                 |
+| `--outdir`     | `results_nextflow`     | Published results root                |
+| `--resolution` | `0.8`                  | Leiden clustering resolution          |
+| `--python`     | `python3`              | Python interpreter (standard profile) |
+| `--multiqc`    | `multiqc`              | MultiQC executable (standard profile) |
+| `--container`  | `scanpy-pbmc3k:latest` | Docker image (docker profile)         |
 
 ## Outputs
 
@@ -141,16 +141,16 @@ multiqc results_nextflow --config nextflow/assets/multiqc_config.yml --outdir mu
 After QC (2,700 → **2,638 cells**, 2.3% removed) and Leiden clustering at
 resolution 0.8, the data resolves into the 8 canonical PBMC populations:
 
-| Cell type | Cells | Fraction |
-|---|---:|---:|
-| CD4 T cells | 1,108 | 42.0% |
-| CD14+ (classical) monocytes | 471 | 17.9% |
-| CD8 T cells | 345 | 13.1% |
-| B cells | 344 | 13.0% |
-| FCGR3A+ (non-classical) monocytes | 169 | 6.4% |
-| NK cells | 154 | 5.8% |
-| Dendritic cells | 35 | 1.3% |
-| Platelets (contaminating) | 12 | 0.5% |
+| Cell type                         | Cells | Fraction |
+|-----------------------------------|------:|---------:|
+| CD4 T cells                       | 1,108 |    42.0% |
+| CD14+ (classical) monocytes       |   471 |    17.9% |
+| CD8 T cells                       |   345 |    13.1% |
+| B cells                           |   344 |    13.0% |
+| FCGR3A+ (non-classical) monocytes |   169 |     6.4% |
+| NK cells                          |   154 |     5.8% |
+| Dendritic cells                   |    35 |     1.3% |
+| Platelets (contaminating)         |    12 |     0.5% |
 
 **Biological interpretation (short):** the recovered composition matches the
 expected PBMC profile of a healthy donor — T cells dominate (~55%), followed by
